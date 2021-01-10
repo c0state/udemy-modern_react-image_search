@@ -1,6 +1,10 @@
-interface ImageListProps {
+import "./ImageList.css";
+import ImageCard from "./ImageCard";
+
+export interface ImageListProps {
   images: {
     id: string;
+    description: string;
     urls: {
       regular: string;
     };
@@ -9,9 +13,9 @@ interface ImageListProps {
 
 const ImageList = ({ images }: ImageListProps) => {
   return (
-    <div>
+    <div className="image-list">
       {images.map((image) => (
-        <img key={image.id} alt="search result" src={image.urls.regular} />
+        <ImageCard key={image.id} image={image} />
       ))}
     </div>
   );
