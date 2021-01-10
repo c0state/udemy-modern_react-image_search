@@ -1,21 +1,20 @@
 interface ImageListProps {
-    images: any[];
-};
-
-const ImageList = ({images }: ImageListProps) => {
-    return (
-        <div>
-            <ul>
-                {
-                images.map(
-                    (image) => (
-                        <li>a</li>
-                    )
-                )
-                }
-            </ul>
-        </div>
-    );
+  images: {
+    id: string;
+    urls: {
+      regular: string;
+    };
+  }[];
 }
+
+const ImageList = ({ images }: ImageListProps) => {
+  return (
+    <div>
+      {images.map((image) => (
+        <img key={image.id} alt="search result" src={image.urls.regular} />
+      ))}
+    </div>
+  );
+};
 
 export default ImageList;
