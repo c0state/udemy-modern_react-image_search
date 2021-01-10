@@ -9,10 +9,14 @@ interface AppStateType {
 }
 
 class App extends React.Component<AppPropsType, AppStateType> {
+    onSearchSubmit(term: string) {
+        console.log(`calling search with term: ${term}`);
+    }
+
     render() {
         return (
             <Container style={{ marginTop: "10px" }}>
-                <SearchBar />
+                <SearchBar onSubmit={this.onSearchSubmit}/>
             </Container>
         );
     }

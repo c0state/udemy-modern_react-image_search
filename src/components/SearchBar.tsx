@@ -1,11 +1,12 @@
 import React from 'react'
-import { Form, Input, Label, Segment } from 'semantic-ui-react'
+import { Form, FormField, Input, Label, Segment } from 'semantic-ui-react'
 
 interface SearchBarPropsType {
+    onSubmit: any;
 }
 
 interface SearchBarStateType {
-    term: string
+    term: string;
 }
 
 class SearchBar extends React.Component<SearchBarPropsType, SearchBarStateType> {
@@ -15,21 +16,20 @@ class SearchBar extends React.Component<SearchBarPropsType, SearchBarStateType> 
 
     onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-
-        console.log(`term is: ${this.state.term}`);
+        this.props.onSubmit(this.state.term);
     }
 
     render() {
         return (
             <Segment>
-                <Form onSubmit={ this.onFormSubmit }>
-                    <div className="field">
+                <Form onSubmit={this.onFormSubmit}>
+                    <FormField>
                         <Label>Image Search</Label>
                         <Input type="text"
-                            placeholder="hahaha"
+                            placeholder="Search Term"
                             value={ this.state.term }
-                            onChange={ (event) => { this.setState({ term: event.target.value }) } } />
-                    </div>
+                            onChange={ event => this.setState({ term: event.target.value }) } />
+                    </FormField>
                 </Form>
             </Segment>
         )
