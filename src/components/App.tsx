@@ -2,6 +2,7 @@ import React from 'react'
 import { Container } from 'semantic-ui-react'
 import SearchBar from './SearchBar'
 import imagesApi from '../api/images';
+import ImageList from './ImageList';
 
 interface AppPropsType {
 }
@@ -25,6 +26,7 @@ class App extends React.Component<AppPropsType, AppStateType> {
             <Container style={{ marginTop: "10px" }}>
                 <SearchBar onSubmit={this.onSearchSubmit}/>
                 Found: {this.state.images.length} images
+                <ImageList images={this.state.images} />
             </Container>
         );
     }
